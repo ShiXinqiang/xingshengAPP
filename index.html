@@ -1,174 +1,217 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Cache-Control" content="no-cache">
-    <meta content="telephone=no" name="format-detection">
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=2.0">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
-    <title>孟波新盛娱乐APP手机客户端下载 - 官网</title>
-    
-    <!-- 样式表 -->
-    <style type="text/css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>新盛娱乐 - 官方下载</title>
+    <style>
         /* 全局重置 */
-        * { margin: 0; padding: 0; }
-        html,body{ -webkit-text-size-adjust:none; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-size: 16px;
-            font-family: "Microsoft YaHei", -apple-system, BlinkMacSystemFont, sans-serif; 
-            color: #d1d1d1; /* 稍微调亮字体颜色以便阅读 */
-            background: #201109;
-            min-width: 320px;
-            overflow-x: hidden;
-            position: relative;
-            margin-bottom: 55px;
+            background-color: #1a1b1f; /* 深色背景 */
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            color: #fff;
+            max-width: 640px; /* 限制最大宽度，模拟手机 */
+            margin: 0 auto;
+            min-height: 100vh;
         }
-        img { vertical-align: middle; border: 0; max-width: 100%; height: auto; }
-        a { text-decoration: none; color: #fff; }
-        
-        /* 布局样式 */
-        .box { max-width: 720px; margin: 0 auto; background: #201109; min-height: 100vh;}
-        
-        /* 顶部 Header */
-        .header {
-            width: 100%;
-            float: left;
-            background: #040301;
-            padding: 10px 0;
+        a { text-decoration: none; display: block; }
+        img { max-width: 100%; display: block; }
+
+        /* 1. 顶部黑色提示栏 */
+        .top-bar {
+            background-color: #000;
+            padding: 8px 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 50px;
         }
-        .header span { margin-left: 10px; width: 35%; display: block;}
-        .header a { margin-right: 10px; width: 30%; display: block;}
-        
-        /* 广告 Banner */
-        .banner { width: 100%; float: left; margin-bottom: 10px;}
-        
-        /* 主体内容 */
-        .main { width: 94%; margin: 0 auto; padding-bottom: 20px; overflow: hidden;}
-        
-        /* 顶部 APP 信息区 */
-        .main_1 { 
-            width: 100%; 
-            display: flex; 
-            align-items: flex-start; 
-            margin-bottom: 20px; 
-            background: rgba(255,255,255,0.05); /* 加一点背景色让它看起来更高级 */
-            padding: 15px;
-            box-sizing: border-box;
+        .top-logo { height: 30px; } /* 左上角小LOGO */
+        .top-tip {
+            color: #ff0000; /* 红色字体 */
+            font-size: 12px;
+            text-align: right;
+            line-height: 1.2;
+            font-weight: bold;
+        }
+        .arrow-up { font-size: 16px; margin-left: 5px; vertical-align: middle;}
+
+        /* 2. 顶部大Banner */
+        .banner { width: 100%; }
+
+        /* 3. APP信息介绍区 */
+        .app-info {
+            padding: 20px;
+            display: flex;
+            align-items: flex-start;
+        }
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            flex-shrink: 0;
+            margin-right: 15px;
+        }
+        .info-text { font-size: 14px; line-height: 1.6; color: #ccc; }
+        .rating { color: #f2ce2b; margin-bottom: 5px; } /* 星星颜色 */
+        .contact-info { margin-top: 5px; color: #ddd; font-style: italic;}
+
+        /* 4. 核心按钮区域 */
+        .btn-container { padding: 0 20px; margin-top: 10px; }
+
+        /* 绿色登录按钮 */
+        .btn-login {
+            background: linear-gradient(to bottom, #00d95a, #009e45); /* 绿色渐变 */
             border-radius: 8px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 0 #006e30; /* 按钮立体阴影 */
         }
-        .c_left { width: 28%; margin-right: 4%; }
-        .c_left img { border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.5); }
+        .play-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            box-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+        .play-triangle {
+            width: 0; height: 0;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-left: 14px solid #fff;
+            margin-left: 4px;
+        }
+        .login-text-group { text-align: left; }
+        .login-title { font-size: 20px; font-weight: bold; color: #fff; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
+        .login-desc { font-size: 10px; color: #d4f7dc; }
+
+        /* 黄色注册按钮 */
+        .btn-register {
+            background: linear-gradient(to bottom, #fffd78, #fff000); /* 黄色渐变 */
+            border-radius: 30px; /* 圆角更大 */
+            color: #000;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            padding: 12px 0;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 0 #bfa500;
+        }
+
+        /* 5. 底部下载按钮组 */
+        .download-group { padding: 0 30px; }
         
-        .c_right { width: 68%; }
-        .c_right p { line-height: 1.8; font-size: 14px; margin-bottom: 5px;}
-        .c_right p i { color: #b3b1b1; font-style: normal; }
-        /* 星星排列 */
-        .star-row { display: flex; align-items: center; gap: 2px; margin-top: 5px;}
-        .star-row img { width: 16px; height: 16px; }
+        .dl-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50px;
+            padding: 10px 0;
+            margin-bottom: 15px;
+            background: transparent;
+            position: relative;
+        }
+        
+        /* 安卓按钮样式 */
+        .android-style { border: 1px solid #00e5ff; }
+        .android-icon { fill: #00e5ff; width: 30px; height: 30px; margin-right: 10px;}
+        .android-text h3 { color: #00e5ff; font-size: 18px; font-weight: normal; }
+        .android-text p { color: #00e5ff; font-size: 10px; transform: scale(0.9); transform-origin: left;}
 
-        /* 按钮区域布局 */
-        .main_3 { width: 100%; margin-top: 15px; text-align: center;}
-        .main_3 img { border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.3); transition: transform 0.1s;}
-        .main_3 img:active { transform: scale(0.98); }
+        /* 苹果按钮样式 */
+        .ios-style { border: 1px solid #4cd964; }
+        .ios-icon { fill: #4cd964; width: 30px; height: 30px; margin-right: 10px;}
+        .ios-text h3 { color: #4cd964; font-size: 18px; font-weight: normal; }
 
-        /* 底部广告位 */
-        .main_2 { width: 100%; margin-top: 15px; }
-        .main_2 img { border-radius: 5px; }
+        /* 底部留白 */
+        .footer-space { height: 50px; }
+
     </style>
 </head>
 <body>
-    <div class="box">
-        <!-- 头部 -->
-        <div class="header">
-            <!-- 【替换点1】 左上角LOGO -->
-            <span>
-                <img src="https://placehold.co/120x40/333333/FFF?text=LOGO+HERE" alt="Logo">
-            </span>
-            <!-- 【替换点2】 右上角下载按钮 -->
-            <a href="#1">
-                <img src="https://placehold.co/100x35/e91e63/FFF?text=Download" alt="下载" style="float:right;">
-            </a>
-        </div>
 
-        <!-- 顶部大横幅 -->
-        <div class="banner">
-            <a href="#1">
-                <!-- 【替换点3】 顶部大广告图 -->
-                <img src="https://placehold.co/720x300/1a1a1a/FFF?text=Main+Banner+Image" alt="Banner">
-            </a>
-        </div>
-
-        <div class="main">
-            <div class="main_1">
-                <!-- APP图标 -->
-                <div class="c_left">
-                    <!-- 【替换点4】 APP方形图标 -->
-                    <img src="https://placehold.co/200x200/444/FFF?text=APP+Icon" alt="App Icon">
-                </div>
-                
-                <!-- 简介文字 -->
-                <div class="c_right">
-                    <p>
-                        <i>用户评分：</i>
-                        <span class="star-row">
-                            <!-- 【无需替换】 这里我用了黄色星星占位图，你可以保留 -->
-                            <img src="https://placehold.co/20x20/FFD700/FFF?text=★" alt="star">
-                            <img src="https://placehold.co/20x20/FFD700/FFF?text=★" alt="star">
-                            <img src="https://placehold.co/20x20/FFD700/FFF?text=★" alt="star">
-                            <img src="https://placehold.co/20x20/FFD700/FFF?text=★" alt="star">
-                            <img src="https://placehold.co/20x20/FFD700/FFF?text=★" alt="star">
-                        </span>
-                    </p>
-                    <p style="color:#fff; font-weight:bold;">孟波新盛娱乐实体现场三合一</p>
-                    <div style="margin-top:8px; border-top:1px dashed #444; padding-top:8px;">
-                        <p><i>【客服微信: 3336846672】</i></p>
-                        <p><i>【客服QQ: 3336846672】</i></p>
-                        <p><i>【电话: 17867757135】</i></p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 下方功能按钮区 -->
-            
-            <div class="main_3">
-                <a href="https://www.xbs666888.com/H5/">
-                    <!-- 【替换点5】 H5版本按钮图片 -->
-                    <img src="https://placehold.co/650x100/2980b9/FFF?text=Enter+H5+Version" alt="H5">
-                </a>
-            </div>
-            
-            <div class="main_3">
-                <a href="jc.html">
-                    <!-- 【替换点6】 注册教程/按钮图片 -->
-                    <img src="https://placehold.co/650x100/27ae60/FFF?text=Register+Now" alt="Register">
-                </a>
-            </div>
-            
-            <div class="main_3">
-                <a href="https://tenglong.bet/guize">
-                    <!-- 【替换点7】 规则/其他按钮图片 -->
-                    <img src="https://placehold.co/650x100/8e44ad/FFF?text=Game+Rules" alt="Rules">
-                </a>
-            </div>
-
-            <!-- 底部额外广告位 -->
-            <div class="main_2">
-                <a href="#">
-                    <!-- 【替换点8】 底部广告图1 -->
-                    <img src="https://placehold.co/650x160/d35400/FFF?text=Bottom+Promo+1" alt="Promo 1">
-                </a>
-            </div>
-            <div class="main_2">
-                <a href="#">
-                    <!-- 【替换点9】 底部广告图2 -->
-                    <img src="https://placehold.co/650x160/c0392b/FFF?text=Bottom+Promo+2" alt="Promo 2">
-                </a>
-            </div>
-
+    <!-- 顶部黑色栏 -->
+    <div class="top-bar">
+        <!-- 这里的Logo换成你自己的 -->
+        <img src="https://placehold.co/100x40/000/d4af37?text=LOGO" class="top-logo" alt="新盛娱乐">
+        <div class="top-tip">
+            微信请点击 •••<br>选择浏览器打开 <span class="arrow-up">↗</span>
         </div>
     </div>
+
+    <!-- 大广告图 -->
+    <div class="banner">
+        <!-- 这里的Banner换成你自己的图片 -->
+        <img src="https://placehold.co/720x350/333/fff?text=Banner+Image" alt="Banner">
+    </div>
+
+    <!-- APP信息区 -->
+    <div class="app-info">
+        <!-- 左侧APP图标 -->
+        <img src="https://placehold.co/150x150/000/d4af37?text=XS" class="app-icon" alt="Icon">
+        
+        <div class="details">
+            <div class="rating">用户评分：★★★★★</div>
+            <div class="info-text">
+                孟波新盛娱乐实体现场三合一同步投注平台<br>
+                <div class="contact-info">
+                    【客服微信:3336846672】<br>
+                    【客服QQ:3336846672】<br>
+                    【电话:17867757135】
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 中间大按钮 -->
+    <div class="btn-container">
+        <!-- 绿色登录按钮 -->
+        <a href="https://www.xbs666888.com/H5/" class="btn-login">
+            <div class="play-icon">
+                <div class="play-triangle"></div>
+            </div>
+            <div class="login-text-group">
+                <div class="login-title">立即登录</div>
+                <div class="login-desc">H5网页版无需下载APP即可在线投注</div>
+            </div>
+        </a>
+
+        <!-- 黄色注册按钮 -->
+        <a href="jc.html" class="btn-register">
+            点击注册
+        </a>
+    </div>
+
+    <!-- 底部下载按钮 -->
+    <div class="download-group">
+        <!-- Android 下载 -->
+        <a href="#" class="dl-btn android-style">
+            <!-- 内嵌SVG图标，无需图片 -->
+            <svg class="android-icon" viewBox="0 0 24 24"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993.0001.5511-.4482.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997m11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.0745 13.8532 7.5 12 7.5c-1.8532 0-3.5902.5745-5.1367 1.4501L4.841 5.4467a.416.416 0 00-.5676-.1521.416.416 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3432-4.1021-2.6889-7.5743-6.1185-9.4396"/></svg>
+            <div class="android-text">
+                <h3>Android 下载</h3>
+                <p>(微信请在右上角选择浏览器打开安装)</p>
+            </div>
+        </a>
+
+        <!-- iOS 下载 -->
+        <a href="#" class="dl-btn ios-style">
+            <!-- 内嵌SVG图标，无需图片 -->
+            <svg class="ios-icon" viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 52.3-11.4 69.5-34.3z"/></svg>
+            <div class="ios-text">
+                <h3>App Store下载</h3>
+            </div>
+        </a>
+    </div>
+
+    <div class="footer-space"></div>
+
 </body>
 </html>
